@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please pick the player position"
+        android:textAlignment="center"
+        android:textSize="28dp"
+        android:textStyle="italic"
+        android:textColor="#000000"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/attack"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="Attack"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/striker"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/attack"
+            android:text="Attack"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:textSize="14sp"/>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/middlefder"
+            android:layout_width="60dp"
+            android:contentDescription="Midd"
+            android:layout_toStartOf="@+id/attack"
+            android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/middelfder"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/middlefder"
+            android:layout_toStartOf="@+id/attack"
+            android:text="Middelfder"
+            android:textSize="14sp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/defence"
+            android:layout_width="60dp"
+            android:contentDescription="Defence"
+            android:layout_toStartOf="@+id/middlefder"
+            android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/defence"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/defence"
+            android:layout_toStartOf="@+id/middlefder"
+            android:text="Defence"
+            android:layout_marginEnd="12dp"
+            android:textSize="14sp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/goalkeeper"
+            android:contentDescription="GK"
+            android:layout_width="60dp"
+            android:layout_toStartOf="@+id/defence"
+            android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/gk"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/defence"
+            android:layout_toStartOf="@+id/defence"
+            android:text="Goalkeeper"
+            android:maxLines="1"
+            android:layout_marginEnd="8dp"
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

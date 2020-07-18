@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:layout_height="match_parent"
+    android:id="@+id/group_container"
+    android:background="@drawable/socccer_field"
+    tools:context=".ui.home.GroupsFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Groups"
+            android:textSize="32sp"
+            android:textColor="#000000"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25">
+
+        <TextView
+            android:id="@+id/players_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of Players"
+            android:drawableEnd="@drawable/ic_persons"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/players_num"
+            android:text="4"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"/>
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_height="wrap_content"
+            android:max="22"
+            android:min="4"
+            android:layout_below="@+id/number"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25">
+
+        <TextView
+            android:id="@+id/teams_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of Teams"
+            android:drawableEnd="@drawable/ic_persons"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/number2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/teams_num"
+            android:text="2"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"/>
+
+        <SeekBar
+            android:id="@+id/seekBar2"
+            android:layout_width="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_height="wrap_content"
+            android:max="11"
+            android:min="2"
+            android:layout_below="@+id/number2"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20">
+
+
+        <Switch
+            android:id="@+id/switch1"
+            android:textSize="24sp"
+            android:layout_marginStart="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Include Player level" />
+
+        <Switch
+            android:id="@+id/switch2"
+            android:textSize="24sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="40dp"
+            android:layout_below="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Include player position" />
+
+        <Switch
+            android:id="@+id/switch3"
+            android:textSize="24sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="40dp"
+            android:layout_below="@+id/switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Use my players" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
+

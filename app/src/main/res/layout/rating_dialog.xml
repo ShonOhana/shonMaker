@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please pick the player rating"
+        android:textAlignment="center"
+        android:textSize="28dp"
+        android:textStyle="italic"
+        android:textColor="#000000"/>
+
+
+    <RatingBar
+        android:id="@+id/rating_rb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:layout_gravity="center"
+        android:isIndicator="false"
+        android:stepSize="0.1"
+        android:focusable="true" />
+
+
+    <TextView
+        android:id="@+id/rating_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="28dp"
+        android:textStyle="italic"
+        android:textColor="#000000"/>
+
+    <SeekBar
+        android:id="@+id/rating_sb"
+        android:layout_width="match_parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_height="wrap_content"
+        android:max="5"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/rating_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
