@@ -20,12 +20,13 @@ import com.example.shonmaker.ui.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 public class PlayersFragment extends Fragment {
 
     private List<Player> playerList;
-    private String name ;
+    private String name;
     private ArrayList<String> names = new ArrayList<>();
     private String position;
     private ArrayList<String> positions = new ArrayList<>();
@@ -45,62 +46,54 @@ public class PlayersFragment extends Fragment {
 
 
         //set the adapter
-        Bundle bundle = this.getArguments();
+        Bundle bundle = getArguments();
         int data = bundle.getInt("players_size");
 
         playerList = new ArrayList<>();
         for (int i = 0; i < data; i++) {
-            playerList.add(new Player(""));
+            playerList.add(new Player(UUID.randomUUID().toString(),"","0"));
         }
 
         RecyclerView recyclerView = root.findViewById(R.id.player_rv);
-        PlayersAdapter playersAdapter = new PlayersAdapter(playerList,getContext());
+        PlayersAdapter playersAdapter = new PlayersAdapter(playerList, getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(playersAdapter);
 
 
-
-
         Button next = root.findViewById(R.id.btn_next);
-        next.setOnClickListener(v->{
+        next.setOnClickListener(v -> {
 
 
-            for(int i=0; i< playersAdapter.getItemCount();i++){
-                PlayersAdapter.ViewHolder viewHolder= (PlayersAdapter.ViewHolder)
-                        recyclerView.findViewHolderForAdapterPosition(i);
-                assert viewHolder != null;
-                name = viewHolder.getPlayerName().getText().toString();
+            for (int i = 0; i < playerList.size(); i++) {
+
+                name = playersAdapter.getPlayers().get(i).getName();
                 names.add(name);
-                position = viewHolder.getPlayerPosition().getText().toString();
+                position = playersAdapter.getPlayers().get(i).getPosition();
                 positions.add(position);
-                rating = viewHolder.getPlayerRating().getText().toString();
+                rating = playersAdapter.getPlayers().get(i).getRate();
                 ratings.add(rating);
+
             }
 
-//            if (!name.equals("") && !position.equals("") && !rating.equals("")){
+            System.out.println("names " + names.toString());
 
             FinalFragment fragment = new FinalFragment();
-            for (int i = 0; i < playersAdapter.getItemCount(); i++) {
-                bundle.putStringArrayList("player_names",names);
-                bundle.putStringArrayList("player_ratings",ratings);
-                bundle.putStringArrayList("player_positions",positions);
+            bundle.putStringArrayList("player_names", names);
+            bundle.putStringArrayList("player_ratings", ratings);
+            bundle.putStringArrayList("player_positions", positions);
 
-            }
 
             bundle.putInt("size", playersAdapter.getItemCount());
 
             fragment.setArguments(bundle);
 
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_right_to_left)
-                        .replace(R.id.player_container, fragment).addToBackStack(null)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit();
-//            }else{
-//                Toast.makeText(getContext(), "Empty!", Toast.LENGTH_SHORT).show();
-//            }
-        });
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(R.anim.enter_left_to_right, R.anim.exit_right_to_left)
+                    .replace(R.id.player_container, fragment).addToBackStack(null)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit();
 
+        });
 
 
         return root;

@@ -3,7 +3,9 @@ package com.example.shonmaker.ui.home;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +32,7 @@ import com.example.shonmaker.R;
 import com.example.shonmaker.ui.Player;
 
 import java.util.List;
+import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -43,6 +47,10 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
         this.context = context;
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -54,7 +62,90 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.numerize.setText(String.valueOf(position + 1));
+        holder.numerize.setText(String.valueOf(position + 1));
+
+            holder.playerName.setText(getPlayers().get(position).getName());
+            holder.playerPosition.setText(getPlayers().get(position).getPosition());
+            holder.playerRating.setText(getPlayers().get(position).getRate());
+
+            holder.playerName.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @RequiresApi(api = Build.VERSION_CODES.M)
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    if ( holder.playerName.getText().toString().equals("")){
+                        holder.playerName.getBackground().setColorFilter(context.getResources()
+                                .getColor(R.color.design_default_color_error), PorterDuff.Mode.SRC_ATOP);
+                    }else {
+                        holder.playerName.getBackground().setColorFilter(context.getResources()
+                                .getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+                        players.get(position).setName(charSequence.toString());
+                    }
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+
+            holder.playerPosition.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @RequiresApi(api = Build.VERSION_CODES.M)
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    if ( holder.playerPosition.getText().toString().equals("")){
+                        holder.playerPosition.getBackground().setColorFilter(context.getResources()
+                                .getColor(R.color.design_default_color_error), PorterDuff.Mode.SRC_ATOP);
+                    }else {
+                        holder.playerPosition.getBackground().setColorFilter(context.getResources()
+                                .getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+                        //TODO: with photos
+//                        players.get(position).set(charSequence.toString());
+                    }
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+
+            holder.playerRating.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @RequiresApi(api = Build.VERSION_CODES.M)
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    if ( holder.playerRating.getText().toString().equals("")){
+                        holder.playerRating.getBackground().setColorFilter(context.getResources()
+                                .getColor(R.color.design_default_color_error), PorterDuff.Mode.SRC_ATOP);
+                    }else {
+                        holder.playerRating.getBackground().setColorFilter(context.getResources()
+                                .getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+                        players.get(position).setRate(charSequence.toString());
+                    }
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
 
             //animation
             holder.parentLayout.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_scale));
@@ -178,6 +269,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.ViewHold
             playerPosition = itemView.findViewById(R.id.player_position);
             numerize = itemView.findViewById(R.id.numerize);
             parentLayout = itemView.findViewById(R.id.parent_layout);
+
 
         }
 

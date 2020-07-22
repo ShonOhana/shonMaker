@@ -41,34 +41,45 @@ public class FinalFragment extends Fragment {
         assert bundle != null;
         int size = bundle.getInt("size");
 
-        for (int i = 0; i < size; i++) {
-            names = bundle.getStringArrayList("player_names");
-            positions = bundle.getStringArrayList("player_positions");
+        names = bundle.getStringArrayList("player_names");
+
+        System.out.println("name " + names);
+        positions = bundle.getStringArrayList("player_positions");
+
+        System.out.println("player " + players);
+
+        for (int i = 0; i < size ; i++) {
+
             players.add(new Player(names.get(i)));
 
         }
 
+
+
+
         List<Player> teamA = new ArrayList<>();
+        List<Player> teamB = new ArrayList<>();
 
-        teamA.add(new Player("fva"));
-        teamA.add(new Player("erger"));
-        teamA.add(new Player("fvergeqraa"));
-        teamA.add(new Player("feragewrva"));
+        for (int i = 0; i < players.size() / 2; i++) {
+            teamA.add(players.get(i));
+        }
 
-
+        for (int i = players.size() / 2; i < players.size(); i++) {
+            teamB.add(players.get(i));
+        }
 
 
         RecyclerView recyclerView = root.findViewById(R.id.rv_team1);
-        GroupAdapter groupAdapter = new GroupAdapter(players,getContext());
+        GroupAdapter groupAdapter = new GroupAdapter(teamA,getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(groupAdapter);
 
 
 
-//        RecyclerView recyclerView2 = root.findViewById(R.id.rv_team2);
-//        GroupAdapter groupAdapter2 = new GroupAdapter(teamA,getContext());
-//        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
-//        recyclerView2.setAdapter(groupAdapter2);
+        RecyclerView recyclerView2 = root.findViewById(R.id.rv_team2);
+        GroupAdapter groupAdapter2 = new GroupAdapter(teamB,getContext());
+        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView2.setAdapter(groupAdapter2);
 
 
 
